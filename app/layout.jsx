@@ -2,6 +2,8 @@ import '@/assets/styles/global.css';
 import NavBar from '@/components/NavBar.jsx';
 import Footer from '@/components/Footer.jsx';
 import AuthProvider from '@/components/AuthProvider.jsx';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata = {
   title: 'PropertyPulse | Find The Perfect Rental',
@@ -17,6 +19,7 @@ const MainLayout = ({ children }) => {
           <NavBar />
           <main>{children}</main>
           <Footer />
+          <ToastContainer />
         </body>
       </html>
     </AuthProvider>
