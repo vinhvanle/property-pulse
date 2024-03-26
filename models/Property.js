@@ -1,4 +1,3 @@
-import { Timestamp } from 'mongodb';
 import { Schema, model, models } from 'mongoose';
 
 const PropertySchema = new Schema(
@@ -51,26 +50,40 @@ const PropertySchema = new Schema(
       },
     ],
     rates: {
-      nightly: { type: Number },
-      weekly: { type: Number },
-      monthly: { type: Number },
+      nightly: {
+        type: Number,
+      },
+      weekly: {
+        type: Number,
+      },
+      monthly: {
+        type: Number,
+      },
     },
     seller_info: {
-      name: { type: String },
-      email: { type: String },
-      phone: { type: String },
+      name: {
+        type: String,
+      },
+      email: {
+        type: String,
+      },
+      phone: {
+        type: String,
+      },
     },
     images: [
       {
-        type: [String],
-        validator: (v) => v.length <= 4,
-        message: (props) =>
-          `The images array can contain a maximum of 4 images, but got ${props.value.length}`,
+        type: String,
       },
     ],
-    is_featured: { type: Boolean, default: false },
+    is_featured: {
+      type: Boolean,
+      default: false,
+    },
   },
-  { Timestamp: true }
+  {
+    timestamps: true,
+  }
 );
 
 const Property = models.Property || model('Property', PropertySchema);

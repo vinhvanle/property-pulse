@@ -1,9 +1,9 @@
 const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
 
-//Fetch all property
+// Fetch all properties
 async function fetchProperties() {
   try {
-    //Handle case where the domain is not available yet
+    // Handle the case where the domain is not available yet
     if (!apiDomain) {
       return [];
     }
@@ -21,10 +21,10 @@ async function fetchProperties() {
   }
 }
 
-//Fetch Single property
+// Fetch single property
 async function fetchProperty(id) {
   try {
-    //Handle case where the domain is not available yet
+    // Handle the case where the domain is not available yet
     if (!apiDomain) {
       return null;
     }

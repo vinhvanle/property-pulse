@@ -1,14 +1,14 @@
 'use client';
-import Image from 'next/image.js';
+import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import Image from 'next/image';
+import Link from 'next/link';
 import logo from '@/assets/images/logo-white.png';
 import profileDefault from '@/assets/images/profile.png';
-import Link from 'next/link.js';
 import { FaGoogle } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation.js';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
-const NavBar = () => {
+const Navbar = () => {
   const { data: session } = useSession();
   const profileImage = session?.user?.image;
 
@@ -25,11 +25,6 @@ const NavBar = () => {
     };
 
     setAuthProviders();
-
-    // NOTE: close mobile menu if the viewport size is changed
-    window.addEventListener('resize', () => {
-      setIsMobileMenuOpen(false);
-    });
   }, []);
 
   return (
@@ -43,7 +38,7 @@ const NavBar = () => {
               id='mobile-dropdown-button'
               className='relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
               aria-controls='mobile-menu'
-              aria-expanded={isMobileMenuOpen}
+              aria-expanded='false'
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             >
               <span className='absolute -inset-0.5'></span>
@@ -190,26 +185,26 @@ const NavBar = () => {
                     tabIndex='-1'
                   >
                     <Link
-                      onClick={() => {
-                        setIsProfileMenuOpen(false);
-                      }}
                       href='/profile'
                       className='block px-4 py-2 text-sm text-gray-700'
                       role='menuitem'
                       tabIndex='-1'
                       id='user-menu-item-0'
+                      onClick={() => {
+                        setIsProfileMenuOpen(false);
+                      }}
                     >
                       Your Profile
                     </Link>
                     <Link
-                      onClick={() => {
-                        setIsProfileMenuOpen(false);
-                      }}
                       href='/properties/saved'
                       className='block px-4 py-2 text-sm text-gray-700'
                       role='menuitem'
                       tabIndex='-1'
                       id='user-menu-item-2'
+                      onClick={() => {
+                        setIsProfileMenuOpen(false);
+                      }}
                     >
                       Saved Properties
                     </Link>
@@ -281,4 +276,4 @@ const NavBar = () => {
     </nav>
   );
 };
-export default NavBar;
+export default Navbar;

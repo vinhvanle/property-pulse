@@ -1,5 +1,5 @@
-import connectDB from '@/config/database.js';
-import Property from '@/models/Property.js';
+import connectDB from '@/config/database';
+import Property from '@/models/Property';
 import { getSessionUser } from '@/utils/getSessionUser';
 import cloudinary from '@/config/cloudinary';
 
@@ -10,7 +10,9 @@ export const GET = async (request) => {
 
     const properties = await Property.find({});
 
-    return Response.json(properties);
+    return new Response(JSON.stringify(properties), {
+      status: 200,
+    });
   } catch (error) {
     console.log(error);
     return new Response('Something Went Wrong', { status: 500 });
@@ -22,6 +24,7 @@ export const POST = async (request) => {
     await connectDB();
 
     const sessionUser = await getSessionUser();
+
     if (!sessionUser || !sessionUser.userId) {
       return new Response('User ID is required', { status: 401 });
     }
@@ -30,13 +33,13 @@ export const POST = async (request) => {
 
     const formData = await request.formData();
 
-    //Access all values from amenities and images
+    // Access all values from amenities and images
     const amenities = formData.getAll('amenities');
     const images = formData
       .getAll('images')
       .filter((image) => image.name !== '');
 
-    //Create a propertyData object for database
+    // Create propertyData object for database
     const propertyData = {
       type: formData.get('type'),
       name: formData.get('name'),
@@ -54,7 +57,7 @@ export const POST = async (request) => {
       rates: {
         weekly: formData.get('rates.weekly'),
         monthly: formData.get('rates.monthly'),
-        nightly: formData.get('rates.nightly'),
+        nightly: formData.get('rates.nightly.'),
       },
       seller_info: {
         name: formData.get('seller_info.name'),
@@ -64,29 +67,30 @@ export const POST = async (request) => {
       owner: userId,
     };
 
-    //Upload image(s) to cloudinary
+    // Upload image(s) to Cloudinary
     const imageUploadPromises = [];
 
     for (const image of images) {
       const imageBuffer = await image.arrayBuffer();
       const imageArray = Array.from(new Uint8Array(imageBuffer));
       const imageData = Buffer.from(imageArray);
-      //Convert the image data to base64
+
+      // Convert the image data to base64
       const imageBase64 = imageData.toString('base64');
 
-      //Make request to upload to Cloudinary
+      // Make request to upload to Cloudinary
       const result = await cloudinary.uploader.upload(
         `data:image/png;base64,${imageBase64}`,
         {
           folder: 'propertypulse',
         }
       );
+
       imageUploadPromises.push(result.secure_url);
 
-      //Wait for all images to upload
+      // Wait for all images to upload
       const uploadedImages = await Promise.all(imageUploadPromises);
-
-      //Add upload images to the propertyData object
+      // Add uploaded images to the propertyData object
       propertyData.images = uploadedImages;
     }
 
@@ -101,7 +105,6 @@ export const POST = async (request) => {
     //   status: 200,
     // });
   } catch (error) {
-    console.log(error);
     return new Response('Failed to add property', { status: 500 });
   }
 };

@@ -1,10 +1,9 @@
 'use client';
-
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import profileDefault from '@/assets/images/profile.png';
-import { useState, useEffect } from 'react';
 import Spinner from '@/components/Spinner';
 import { toast } from 'react-toastify';
 
@@ -25,6 +24,7 @@ const ProfilePage = () => {
 
       try {
         const res = await fetch(`/api/properties/user/${userId}`);
+
         if (res.status === 200) {
           const data = await res.json();
           setProperties(data);
@@ -35,7 +35,8 @@ const ProfilePage = () => {
         setLoading(false);
       }
     };
-    //Fetch user properties when session is available
+
+    // Fetch user properties when session is available
     if (session?.user?.id) {
       fetchUserProperties(session.user.id);
     }
@@ -46,7 +47,7 @@ const ProfilePage = () => {
       'Are you sure you want to delete this property?'
     );
 
-    if (!confirm) return;
+    if (!confirmed) return;
 
     try {
       const res = await fetch(`/api/properties/${propertyId}`, {
@@ -54,18 +55,20 @@ const ProfilePage = () => {
       });
 
       if (res.status === 200) {
-        //Remove the property from state
+        // Remove the property from state
         const updatedProperties = properties.filter(
           (property) => property._id !== propertyId
         );
+
         setProperties(updatedProperties);
-        toast.success('Property Deleted!');
+
+        toast.success('Property Deleted');
       } else {
         toast.error('Failed to delete property');
       }
     } catch (error) {
-      toast.error('Failed to delete property');
       console.log(error);
+      toast.error('Failed to delete property');
     }
   };
 
@@ -80,9 +83,9 @@ const ProfilePage = () => {
                 <Image
                   className='h-32 w-32 md:h-48 md:w-48 rounded-full mx-auto md:mx-0'
                   src={profileImage || profileDefault}
-                  alt='User'
                   width={200}
                   height={200}
+                  alt='User'
                 />
               </div>
               <h2 className='text-2xl mb-4'>
@@ -98,7 +101,6 @@ const ProfilePage = () => {
               {!loading && properties.length === 0 && (
                 <p>You have no property listings</p>
               )}
-
               {loading ? (
                 <Spinner loading={loading} />
               ) : (
@@ -117,8 +119,8 @@ const ProfilePage = () => {
                     <div className='mt-2'>
                       <p className='text-lg font-semibold'>{property.name}</p>
                       <p className='text-gray-600'>
-                        Address: {property.location.street},{' '}
-                        {property.location.city}, {property.location.state}
+                        Address: {property.location.street}{' '}
+                        {property.location.city} {property.location.state}
                       </p>
                     </div>
                     <div className='mt-2'>

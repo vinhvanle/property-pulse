@@ -2,12 +2,13 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
-import { fetchProperty } from '@/utils/request';
+import { fetchProperty } from '@/utils/requests';
 
 const PropertyEditForm = () => {
   const { id } = useParams();
   const router = useRouter();
 
+  const [mounted, setMounted] = useState(false);
   const [fields, setFields] = useState({
     type: '',
     name: '',
@@ -36,6 +37,8 @@ const PropertyEditForm = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setMounted(true);
+
     // Fetch property data for form
     const fetchPropertyData = async () => {
       try {
@@ -135,6 +138,7 @@ const PropertyEditForm = () => {
   };
 
   return (
+    mounted &&
     !loading && (
       <form onSubmit={handleSubmit}>
         <h2 className='text-3xl text-center font-semibold mb-6'>
@@ -155,7 +159,6 @@ const PropertyEditForm = () => {
           >
             <option value='Apartment'>Apartment</option>
             <option value='Condo'>Condo</option>
-            <option value='Chalet'>Chalet</option>
             <option value='House'>House</option>
             <option value='Cabin Or Cottage'>Cabin or Cottage</option>
             <option value='Room'>Room</option>
@@ -312,32 +315,6 @@ const PropertyEditForm = () => {
             <div>
               <input
                 type='checkbox'
-                id='amenity_outdoor'
-                name='amenities'
-                value='Outdoor Grill/BBQ'
-                className='mr-2'
-                checked={fields.amenities.includes('Outdoor Grill/BBQ')}
-                onChange={handleAmenitiesChange}
-              />
-              <label htmlFor='amenity_outdoor'>Outdoor Grill/BBQ</label>
-            </div>
-            <div>
-              <input
-                type='checkbox'
-                id='amenity_high_speed_internet'
-                name='amenities'
-                value='High-Speed Internet'
-                className='mr-2'
-                checked={fields.amenities.includes('High-Speed Internet')}
-                onChange={handleAmenitiesChange}
-              />
-              <label htmlFor='amenity_high_speed_internet'>
-                High-Speed Internet
-              </label>
-            </div>
-            <div>
-              <input
-                type='checkbox'
                 id='amenity_kitchen'
                 name='amenities'
                 value='Full Kitchen'
@@ -346,42 +323,6 @@ const PropertyEditForm = () => {
                 onChange={handleAmenitiesChange}
               />
               <label htmlFor='amenity_kitchen'>Full kitchen</label>
-            </div>
-            <div>
-              <input
-                type='checkbox'
-                id='amenity_beach'
-                name='amenities'
-                value='Beach Access'
-                className='mr-2'
-                checked={fields.amenities.includes('Beach Access')}
-                onChange={handleAmenitiesChange}
-              />
-              <label htmlFor='amenity_beach'>Beach Access</label>
-            </div>
-            <div>
-              <input
-                type='checkbox'
-                id='amenity_hiking'
-                name='amenities'
-                value='Hiking Trails Access'
-                className='mr-2'
-                checked={fields.amenities.includes('Hiking Trails Access')}
-                onChange={handleAmenitiesChange}
-              />
-              <label htmlFor='amenity_hiking'>Hiking Trails Access</label>
-            </div>
-            <div>
-              <input
-                type='checkbox'
-                id='amenity_fireplace'
-                name='amenities'
-                value='Fireplace'
-                className='mr-2'
-                checked={fields.amenities.includes('Fireplace')}
-                onChange={handleAmenitiesChange}
-              />
-              <label htmlFor='amenity_fireplace'>Fireplace</label>
             </div>
             <div>
               <input

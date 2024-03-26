@@ -1,13 +1,13 @@
-import '@/assets/styles/global.css';
-import NavBar from '@/components/NavBar.jsx';
-import Footer from '@/components/Footer.jsx';
-import AuthProvider from '@/components/AuthProvider.jsx';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import AuthProvider from '@/components/AuthProvider';
 import { ToastContainer } from 'react-toastify';
+import '@/assets/styles/globals.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata = {
   title: 'PropertyPulse | Find The Perfect Rental',
-  description: 'Find you dream rental property',
+  description: 'Find your dream rental property',
   keywords: 'rental, find rentals, find properties',
 };
 
@@ -16,7 +16,7 @@ const MainLayout = ({ children }) => {
     <AuthProvider>
       <html lang='en'>
         <body>
-          <NavBar />
+          <Navbar />
           <main>{children}</main>
           <Footer />
           <ToastContainer />
@@ -25,5 +25,4 @@ const MainLayout = ({ children }) => {
     </AuthProvider>
   );
 };
-
 export default MainLayout;

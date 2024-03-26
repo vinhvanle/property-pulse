@@ -1,6 +1,5 @@
-import cloudinary from '@/config/cloudinary';
-import connectDB from '@/config/database.js';
-import Property from '@/models/Property.js';
+import connectDB from '@/config/database';
+import Property from '@/models/Property';
 import { getSessionUser } from '@/utils/getSessionUser';
 
 // GET /api/properties/:id
@@ -12,7 +11,9 @@ export const GET = async (request, { params }) => {
 
     if (!property) return new Response('Property Not Found', { status: 404 });
 
-    return Response.json(property);
+    return new Response(JSON.stringify(property), {
+      status: 200,
+    });
   } catch (error) {
     console.log(error);
     return new Response('Something Went Wrong', { status: 500 });
@@ -23,54 +24,45 @@ export const GET = async (request, { params }) => {
 export const DELETE = async (request, { params }) => {
   try {
     const propertyId = params.id;
+
     const sessionUser = await getSessionUser();
 
-    //Check for session
+    // Check for session
     if (!sessionUser || !sessionUser.userId) {
       return new Response('User ID is required', { status: 401 });
     }
 
     const { userId } = sessionUser;
+
     await connectDB();
 
     const property = await Property.findById(propertyId);
 
     if (!property) return new Response('Property Not Found', { status: 404 });
 
-    //Verify ownership
+    // Verify ownership
     if (property.owner.toString() !== userId) {
       return new Response('Unauthorized', { status: 401 });
     }
 
-    //extract public id's from image url to DB
-    const publicIds = property.images.map((imageUrl) => {
-      const parts = imageUrl.split('/');
-      return parts.at(-1).split('.').at(0);
-    });
-
-    //Delete images from Cloudinary
-    if (publicIds.length > 0) {
-      for (let publicId of publicIds) {
-        await cloudinary.uploader.destroy('propertypulse/' + publicId);
-      }
-    }
-
-    //Proceed with property deletetion
-
     await property.deleteOne();
-    return new Response('Property Deleted', { status: 200 });
+
+    return new Response('Property Deleted', {
+      status: 200,
+    });
   } catch (error) {
     console.log(error);
     return new Response('Something Went Wrong', { status: 500 });
   }
 };
 
-//PUT /api/properties/:id
+// PUT /api/properties/:id
 export const PUT = async (request, { params }) => {
   try {
     await connectDB();
 
     const sessionUser = await getSessionUser();
+
     if (!sessionUser || !sessionUser.userId) {
       return new Response('User ID is required', { status: 401 });
     }
@@ -80,22 +72,22 @@ export const PUT = async (request, { params }) => {
 
     const formData = await request.formData();
 
-    //Access all values from amenities and images
+    // Access all values from amenities
     const amenities = formData.getAll('amenities');
 
-    //Get property to update
+    // Get property to update
     const existingProperty = await Property.findById(id);
 
     if (!existingProperty) {
       return new Response('Property does not exist', { status: 404 });
     }
 
-    //Verify ownership
+    // Verify ownership
     if (existingProperty.owner.toString() !== userId) {
       return new Response('Unauthorized', { status: 401 });
     }
 
-    //Create a propertyData object for database
+    // Create propertyData object for database
     const propertyData = {
       type: formData.get('type'),
       name: formData.get('name'),
@@ -113,7 +105,7 @@ export const PUT = async (request, { params }) => {
       rates: {
         weekly: formData.get('rates.weekly'),
         monthly: formData.get('rates.monthly'),
-        nightly: formData.get('rates.nightly'),
+        nightly: formData.get('rates.nightly.'),
       },
       seller_info: {
         name: formData.get('seller_info.name'),
@@ -123,7 +115,7 @@ export const PUT = async (request, { params }) => {
       owner: userId,
     };
 
-    //Update property in database
+    // Update property in database
     const updatedProperty = await Property.findByIdAndUpdate(id, propertyData);
 
     return new Response(JSON.stringify(updatedProperty), {

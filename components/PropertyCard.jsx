@@ -1,5 +1,5 @@
-import Image from 'next/image.js';
-import Link from 'next/link.js';
+import Image from 'next/image';
+import Link from 'next/link';
 import {
   FaBed,
   FaBath,
@@ -11,6 +11,7 @@ import {
 const PropertyCard = ({ property }) => {
   const getRateDisplay = () => {
     const { rates } = property;
+
     if (rates.monthly) {
       return `${rates.monthly.toLocaleString()}/mo`;
     } else if (rates.weekly) {
@@ -24,11 +25,11 @@ const PropertyCard = ({ property }) => {
     <div className='rounded-xl shadow-md relative'>
       <Image
         src={property.images[0]}
+        alt=''
         height={0}
         width={0}
         sizes='100vw'
         className='w-full h-auto rounded-t-xl'
-        alt={`Property ${property._id} image`}
       />
       <div className='p-4'>
         <div className='text-left md:text-center lg:text-left mb-6'>
@@ -41,15 +42,15 @@ const PropertyCard = ({ property }) => {
 
         <div className='flex justify-center gap-4 text-gray-500 mb-4'>
           <p>
-            <FaBed className='inline mr-2'></FaBed> {property.beds}{' '}
+            <FaBed className='inline mr-2' /> {property.beds}{' '}
             <span className='md:hidden lg:inline'>Beds</span>
           </p>
           <p>
-            <FaBath className='inline mr-2'></FaBath> {property.baths}{' '}
-            <span className='md:hidden lg:inline'>Baths</span>
+            <FaBath className='inline mr-2' />
+            {property.baths} <span className='md:hidden lg:inline'>Baths</span>
           </p>
           <p>
-            <FaRulerCombined className='inline mr-2'></FaRulerCombined>
+            <FaRulerCombined className='inline mr-2' />
             {property.square_feet}{' '}
             <span className='md:hidden lg:inline'>sqft</span>
           </p>
@@ -61,11 +62,13 @@ const PropertyCard = ({ property }) => {
               <FaMoneyBill className='inline mr-2' /> Nightly
             </p>
           )}
+
           {property.rates.weekly && (
             <p>
               <FaMoneyBill className='inline mr-2' /> Weekly
             </p>
           )}
+
           {property.rates.monthly && (
             <p>
               <FaMoneyBill className='inline mr-2' /> Monthly

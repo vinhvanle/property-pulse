@@ -1,4 +1,5 @@
-import Image from 'next/image.js';
+import Image from 'next/image';
+
 const PropertyHeaderImage = ({ image }) => {
   return (
     <section>

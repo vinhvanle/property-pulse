@@ -1,0 +1,465 @@
+
+
+{
+
+  total: 11,
+
+  properties: Array(6) [
+
+    {
+
+      location: {
+
+        street: '120 Tremont Street',
+
+        city: 'Boston',
+
+        state: 'MA',
+
+        zipcode: '02108'
+
+      },
+
+      rates: { nightly: null, weekly: 111, monthly: 111 },
+
+      seller_info: {
+
+        name: 'John Doe',
+
+        email: 'john@gmail.com',
+
+        phone: '303-555-5555'
+
+      },
+
+      _id: '6602aae12763c210207c6f7c',
+
+      owner: '65fd8dc3557594d2f51cbf19',
+
+      name: 'Boston Commons Retreat',
+
+      type: 'Apartment',
+
+      description: 'a',
+
+      beds: 1,
+
+      baths: 1,
+
+      square_feet: 1,
+
+      amenities: [ 'Washer & Dryer', 'Swimming Pool', 'Wheelchair Accessible' ],
+
+      images: [
+
+        [
+
+          
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711450845/propertypulse/bssghz3d6u6w2s3ntrjt.jpg', 
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711450846/propertypulse/blholxlqzpxkbwcgmtwo.jpg',
+
+          
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711450847/propertypulse/kpfiwibidr7ewuznldaw.jpg'
+
+        ]
+
+      ],
+
+      is_featured: false,
+
+      __v: 0
+
+    },
+
+    {
+
+      location: {
+
+        street: '120 Tremont Street',
+
+        city: 'Boston',
+
+        state: 'MA',
+
+        zipcode: '02108'
+
+      },
+
+      rates: { nightly: null, weekly: 1100, monthly: 4200 },
+
+      seller_info: {
+
+        name: 'John Doe',
+
+        email: 'john@gmail.com',
+
+        phone: '617-555-5555'
+
+      },
+
+      _id: '6602acc72763c210207c6fb9',
+
+      owner: '65fd8dc3557594d2f51cbf19',
+
+      name: 'Boston Commons Retreat',
+
+      type: 'Apartment',
+
+      description: 
+
+        'This is a beautiful apartment located near the commons. It is a 2 bedroom apartment with a full kitchen and bathroom. It is available for weekly or monthly rentals.',
+
+      beds: 2,
+
+      baths: 1,
+
+      square_feet: 1500,
+
+      amenities: Array(14) [
+
+        'Wifi', 'Full Kitchen', 'Washer & Dryer', 'Free Parking', 'Hot Tub', '24/7 Security',
+
+        'Wheelchair Accessible', 'Elevator Access', 'Dishwasher', 'Gym/Fitness Center',
+
+        'Air Conditioning', 'Balcony/Patio', 'Smart TV', 'Coffee Maker'
+
+      ],
+
+      images: [
+
+        [
+
+          
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711451328/propertypulse/fy5l4al2nu8wfgki3rka.jpg', 
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711451329/propertypulse/lfc2ahwz6pb4kst31lmq.jpg',
+
+          
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711451332/propertypulse/xursutsmztzqubinouow.jpg',
+
+          
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711451333/propertypulse/ojd0ahflipm2mmqjlncb.jpg'
+
+        ]
+
+      ],
+
+      is_featured: false,
+
+      __v: 0
+
+    },
+
+    {
+
+      location: {
+
+        street: '45 Main Street',
+
+        city: 'New York',
+
+        state: 'NY',
+
+        zipcode: '10001'
+
+      },
+
+      rates: { nightly: null, weekly: 1000, monthly: 4000 },
+
+      seller_info: {
+
+        name: 'Jane Smith',
+
+        email: 'jane@gmail.com',
+
+        phone: '212-555-5555'
+
+      },
+
+      _id: '6602ada92763c210207c6fc4',
+
+      owner: '65fd8dc3557594d2f51cbf19',
+
+      name: 'Cozy Downtown Loft',
+
+      type: 'Apartment',
+
+      description: 'A cozy downtown loft with great city views.',
+
+      beds: 1,
+
+      baths: 1,
+
+      square_feet: 1800,
+
+      amenities: Array(13) [
+
+        'Wifi', 'Full Kitchen', 'Washer & Dryer', 'Free Parking', 'Hot Tub', '24/7 Security',
+
+        'Wheelchair Accessible', 'Elevator Access', 'Dishwasher', 'Air Conditioning',
+
+        'Smart TV', 'High-Speed Internet', 'Outdoor Grill/BBQ'
+
+      ],
+
+      images: [
+
+        [
+
+          
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711451556/propertypulse/stqiumb69soymbg4o3gr.jpg', 
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711451557/propertypulse/t9tk5ukcoa4pymhcbjb4.jpg',
+
+          
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711451560/propertypulse/os7ismd6prsken3piqm3.jpg'
+
+        ]
+
+      ],
+
+      is_featured: false,
+
+      __v: 0
+
+    },
+
+    {
+
+      location: {
+
+        street: '500 Lux Lane',
+
+        city: 'Los Angeles',
+
+        state: 'CA',
+
+        zipcode: '90001'
+
+      },
+
+      rates: { nightly: null, weekly: 750, monthly: 3300 },
+
+      seller_info: {
+
+        name: 'David Johnson',
+
+        email: 'david@gmail.com',
+
+        phone: '213-555-5555'
+
+      },
+
+      _id: '6602ae812763c210207c6fcd',
+
+      owner: '65fd8dc3557594d2f51cbf19',
+
+      name: 'Luxury Condo with a View',
+
+      type: 'Condo',
+
+      description: 
+
+        'Experience luxury in this stunning condo with breathtaking views.',
+
+      beds: 3,
+
+      baths: 2,
+
+      square_feet: 2200,
+
+      amenities: Array(14) [
+
+        'Wifi', 'Full Kitchen', 'Washer & Dryer', 'Free Parking', 'Hot Tub', '24/7 Security',
+
+        'Wheelchair Accessible', 'Elevator Access', 'Dishwasher', 'Gym/Fitness Center',
+
+        'Air Conditioning', 'Smart TV', 'Coffee Maker', 'Swimming Pool'
+
+      ],
+
+      images: [
+
+        [
+
+          
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711451774/propertypulse/rshc1oshpdpkcsagunvl.jpg', 
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711451775/propertypulse/r4hn6rvl6ylxberfhrmh.jpg',
+
+          
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711451775/propertypulse/wqadzgyetolwhh1qanj2.jpg',
+
+          
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711451776/propertypulse/n5mzsqn4yfm05jmtaghq.jpg'
+
+        ]
+
+      ],
+
+      is_featured: false,
+
+      __v: 0
+
+    },
+
+    {
+
+      location: {
+
+        street: '123 Countryside Lane',
+
+        city: 'Austin',
+
+        state: 'TX',
+
+        zipcode: '78701'
+
+      },
+
+      rates: { nightly: null, weekly: 2000, monthly: null },
+
+      seller_info: {
+
+        name: 'Emily Davis',
+
+        email: 'emily@gmail.com',
+
+        phone: '512-555-5555'
+
+      },
+
+      _id: '6602aef82763c210207c6fd6',
+
+      owner: '65fd8dc3557594d2f51cbf19',
+
+      name: 'Charming Cottage Getaway',
+
+      type: 'Cabin Or Cottage',
+
+      description: 'Escape to this charming cottage for a peaceful retreat.',
+
+      beds: 1,
+
+      baths: 1,
+
+      square_feet: 900,
+
+      amenities: [ 'Balcony/Patio', 'Coffee Maker', 'Outdoor Grill/BBQ', 'Fireplace' ],
+
+      images: [
+
+        [
+
+          
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711451890/propertypulse/eebtf4urhxkquh9thqvw.jpg', 
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711451893/propertypulse/md2lrclp8gxgvw1eqwb3.jpg',
+
+          
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711451894/propertypulse/xw63eqm0p3qsdqockj4f.jpg'
+
+        ]
+
+      ],
+
+      is_featured: false,
+
+      __v: 0
+
+    },
+
+    {
+
+      location: {
+
+        street: '75 Urban Avenue',
+
+        city: 'Chicago',
+
+        state: 'IL',
+
+        zipcode: '60601'
+
+      },
+
+      rates: { weekly: 1100, monthly: 4200, nightly: null },
+
+      seller_info: {
+
+        name: 'Michael Brown',
+
+        email: 'michael@gmail.com',
+
+        phone: '312-555-5555'
+
+      },
+
+      _id: '6602af472763c210207c6fdf',
+
+      owner: '65fd8dc3557594d2f51cbf19',
+
+      name: 'Modern Downtown Studio',
+
+      type: 'Studio',
+
+      description: 'Stay in style in this modern downtown studio apartment.',
+
+      beds: 1,
+
+      baths: 1,
+
+      square_feet: 900,
+
+      amenities: [
+
+        'Outdoor Grill/BBQ', 'High-Speed Internet', 'Gym/Fitness Center', 'Air Conditioning',
+
+        'Smart TV'
+
+      ],
+
+      images: [
+
+        [
+
+          
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711451971/propertypulse/pvmh46r1k4lwkwqki52y.jpg', 
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711451971/propertypulse/vpx0alxgxeupqooh4mtz.jpg',
+
+          
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711451972/propertypulse/i2tnpxwaavzbox7blesw.jpg',
+
+          
+
+            'https://res.cloudinary.com/diupebpvg/image/upload/v1711451973/propertypulse/dpr6hkvep2ft6jqbjkqt.jpg'
+
+        ]
+
+      ],
+
+      is_featured: false,
+
+      __v: 0
+
+    }
+
+  ]
+
+}
