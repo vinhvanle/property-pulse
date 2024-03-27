@@ -30,11 +30,12 @@ const SearchResultsPage = () => {
           setProperties([]);
         }
       } catch (error) {
-        console.log(error);
+        console.log(eror);
       } finally {
         setLoading(false);
       }
     };
+
     fetchSearchResults();
   }, [location, propertyType]);
 
@@ -54,8 +55,7 @@ const SearchResultsPage = () => {
               href='/properties'
               className='flex items-center text-blue-500 hover:underline mb-3'
             >
-              <FaArrowAltCircleLeft className='mr-2 mb-1' />
-              Back To Properties
+              <FaArrowAltCircleLeft className='mr-2 mb-1' /> Back To Properties
             </Link>
             <h1 className='text-2xl mb-4'>Search Results</h1>
             {properties.length === 0 ? (
@@ -73,5 +73,4 @@ const SearchResultsPage = () => {
     </>
   );
 };
-
 export default SearchResultsPage;

@@ -25,6 +25,7 @@ const ShareButtons = ({ property }) => {
         >
           <FacebookIcon size={40} round={true} />
         </FacebookShareButton>
+
         <TwitterShareButton
           url={shareUrl}
           title={property.name}
@@ -32,6 +33,7 @@ const ShareButtons = ({ property }) => {
         >
           <TwitterIcon size={40} round={true} />
         </TwitterShareButton>
+
         <WhatsappShareButton
           url={shareUrl}
           title={property.name}
@@ -39,6 +41,7 @@ const ShareButtons = ({ property }) => {
         >
           <WhatsappIcon size={40} round={true} />
         </WhatsappShareButton>
+
         <EmailShareButton
           url={shareUrl}
           subject={property.name}
