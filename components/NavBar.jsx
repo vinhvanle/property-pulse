@@ -7,6 +7,7 @@ import logo from '@/assets/images/logo-white.png';
 import profileDefault from '@/assets/images/profile.png';
 import { FaGoogle } from 'react-icons/fa';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
+import UnreadMessageCount from './UnreadMessageCount';
 
 const Navbar = () => {
   const { data: session } = useSession();
@@ -25,7 +26,15 @@ const Navbar = () => {
     };
 
     setAuthProviders();
+
+    // NOTE: close mobile menu if the viewport size is changed
+    window.addEventListener('resize', () => {
+      setIsMobileMenuOpen(false);
+    });
   }, []);
+
+  // NOTE: the aria-expanded attribute value should change with state for
+  // correct a11y
 
   return (
     <nav className='bg-blue-700 border-b border-blue-500'>
@@ -38,7 +47,7 @@ const Navbar = () => {
               id='mobile-dropdown-button'
               className='relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
               aria-controls='mobile-menu'
-              aria-expanded='false'
+              aria-expanded={isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             >
               <span className='absolute -inset-0.5'></span>
@@ -146,10 +155,7 @@ const Navbar = () => {
                     />
                   </svg>
                 </button>
-                <span className='absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full'>
-                  2
-                  {/* <!-- Replace with the actual number of notifications --> */}
-                </span>
+                <UnreadMessageCount session={session} />
               </Link>
               {/* <!-- Profile dropdown button --> */}
               <div className='relative ml-3'>
@@ -158,7 +164,7 @@ const Navbar = () => {
                     type='button'
                     className='relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'
                     id='user-menu-button'
-                    aria-expanded='false'
+                    aria-expanded={isProfileMenuOpen}
                     aria-haspopup='true'
                     onClick={() => setIsProfileMenuOpen((prev) => !prev)}
                   >
