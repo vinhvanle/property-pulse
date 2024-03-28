@@ -32,11 +32,16 @@ export const GET = async (request) => {
 
     const properties = await Property.find(query);
 
-    return new Response(JSON.stringify(properties), {
+    // Create a new Response object to return JSON data
+    const jsonResponse = new Response(JSON.stringify(properties), {
       status: 200,
+      headers: { 'Content-Type': 'application/json' },
     });
+
+    return jsonResponse;
   } catch (error) {
     console.log(error);
+    // Return a Response with an appropriate error message
     return new Response('Something went wrong', { status: 500 });
   }
 };
